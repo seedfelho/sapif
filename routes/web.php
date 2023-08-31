@@ -21,3 +21,15 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+/*minhas rotas*/
+Route::get('/produto', function () {
+    $produtos = App\Produto::all();
+    return view('produtos', compact('produtos'));
+});
+
+Route::get('produto/{id}', function($id){
+    $produto = App\Produto::where('id', '=', $id)->firstOrFail();
+    return view('produtoSelecionado', compact('produto'));
+});
