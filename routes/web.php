@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -24,9 +24,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 /*minhas rotas*/
-Route::get('/produto', function () {
+Route::get('/', function () {
     $produtos = App\Produto::all();
-    return view('produtos', compact('produtos'));
+    return view('welcome', compact('produtos'));
 });
 
 Route::get('produto/{id}', function($id){

@@ -2,18 +2,26 @@
 <html>
 <head>
 <title>{{ $produto->descricao }}</title>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="{{ asset('css/produtoSelecionado.css') }}" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-            <img src="{{ Voyager::image( $produto->foto ) }}" style="">
-			<h1>{{ $produto->descricao }}</h1>
-			<p>{!! $produto->local_encontrado !!}</p>
-			<p>{!! $produto->quem_encontrou !!}</p>
-
+		<!-- <div class="col-md-8 col-md-offset-2"> -->
+		<div class="conteiner">
+			<div class="img-produtoSelecionado">
+            	<img src="{{ Voyager::image( $produto->foto ) }}" style="">
+			</div>
+			<div class="informacoes">
+				<div class="descricaoProduto">
+					<h1>{{ $produto->descricao }}</h1>
+				</div>
+				<div class="Mais inf">
+					<p>{!! $produto->local_encontrado !!}</p>
+					<p>{!! $produto->quem_encontrou !!}</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
