@@ -25,11 +25,26 @@ Route::group(['prefix' => 'admin'], function () {
 
 /*minhas rotas*/
 Route::get('/', function () {
-    $produtos = App\Produto::all();
+    $produtos = App\Produto::where('retirado', '<>', true)->get();
     return view('welcome', compact('produtos'));
 });
 
 Route::get('produto/{id}', function($id){
     $produto = App\Produto::where('id', '=', $id)->firstOrFail();
     return view('produtoSelecionado', compact('produto'));
+});
+
+Route::get('/localRetirada', function(){
+    return view('localRetirada');
+});
+
+
+Route::get('/quemDesenvolveu', function(){
+    return view('quemDesenvolveu');
+});
+
+
+Route::get('/itensRetirados', function(){
+    $produtos = App\Produto::where('retirado', '=', true)->get();
+    return view('welcome', compact('produtos'));
 });

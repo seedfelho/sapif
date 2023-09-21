@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+/*menu*/
 .layout {
   z-index: 1;
 }
@@ -337,7 +337,7 @@ a {
   opacity: 1;
 }
 .layout .sidebar .pro-sidebar-logo > h5:hover{
-  cursor: pointer;
+  cursor: context-menu;
 }
 .layout .sidebar .footer-box {
   display: flex;
@@ -435,83 +435,28 @@ a {
 .login-ico{
   color: red;
 }
+/*menu*/
 
-.img-produtoSelecionado{
-    width: 400px;
-    height: 500px;
-    border: 2px solid #edf0f5;
-    border-radius: 5px;
-    padding: 2%;
+.foto{
+    height: 300px;
+    width: 250px;
+    background-color: #6c757d;
+}
+
+.container{
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
-img{
-    width: 100%;
-    height: 100%;
-}
-.conteiner{
-    height: 100%;
+
+.imagens{
     display: flex;
-    flex-wrap:wrap;
-    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+}
+
+.test{
     text-align: center;
-    padding: 80px 0px 0px 150px;
-}
-
-.informacoes{
-    padding: 50px 0px 0px 200px;
-}
-
-.tituloProduto{
-    font-size: 35px;
-}
-
-.textProduto{
-    font-size: 25px;
-}
-
-/* Botão ver */
-.btn-ver {
-    color: #19882c;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 2px solid #19882c;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-weight: bold;
-    background: transparent;
-    position: relative;
-    transition: all 1s;
-    overflow: hidden;
-  }
-  
-  .btn-ver:hover {
-    color: white;
-    cursor: pointer;
-  }
-  
-  .btn-ver::before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 0%;
-    top: 0;
-    left: -40px;
-    transform: skewX(45deg);
-    background-color: #19882c;
-    z-index: -1;
-    transition: all 1s;
-  }
-  
-  .btn-ver:hover::before {
-    width: 180%;
-  }
-  /* Botão ver Fim */
-.aLogo{
-    color: white;
-}
-
-.aLogo:hover{
-    cursor: pointer;
 }
