@@ -439,15 +439,15 @@ a {
 
 .foto{
     height: 300px;
-    width: 250px;
     background-color: #6c757d;
 }
 
 .container{
     width: 100%;
     display: flex;
+    flex-direction: column;
+    text-align: center;
     align-items: center;
-    justify-content: center;
 }
 
 .imagens{
@@ -455,8 +455,20 @@ a {
     align-items: center;
     justify-content: center;
     gap: 120px;
+    padding-top: 50px;
 }
 
-.test{
-    text-align: center;
+.textoImg{
+  text-align: center;
+  font-size: 18px;
+}
+
+.textTop{
+  padding: 20px;
+  font-size: 40px;
+  align-self: center;
+}
+.nome{
+  width: 260px;
+  text-align: center;
 }

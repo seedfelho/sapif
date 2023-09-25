@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,12 @@ Route::group(['prefix' => 'admin'], function () {
 /*minhas rotas*/
 Route::get('/', function () {
     $produtos = App\Produto::where('retirado', '<>', true)->get();
+    return view('welcome', compact('produtos'));
+});
+
+Route::post('/', function (Request $request) {
+    $descricao = $request->input('descricao');
+    $produtos = App\Produto::where('retirado', '<>', true)->where('descricao', 'like',  "%".$descricao."%")->get();
     return view('welcome', compact('produtos'));
 });
 
