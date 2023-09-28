@@ -28,13 +28,16 @@ Route::group(['prefix' => 'admin'], function () {
 /*minhas rotas*/
 Route::get('/', function () {
     $produtos = App\Produto::where('retirado', '<>', true)->get();
-    return view('welcome', compact('produtos'));
+    $descricao = "";
+    $action = "/";
+    return view('welcome', compact('produtos', 'descricao', 'action'));
 });
 
 Route::post('/', function (Request $request) {
     $descricao = $request->input('descricao');
+    $action = "/";
     $produtos = App\Produto::where('retirado', '<>', true)->where('descricao', 'like',  "%".$descricao."%")->get();
-    return view('welcome', compact('produtos'));
+    return view('welcome', compact('produtos', 'descricao', 'action'));
 });
 
 Route::get('produto/{id}', function($id){
@@ -54,5 +57,14 @@ Route::get('/quemDesenvolveu', function(){
 
 Route::get('/itensRetirados', function(){
     $produtos = App\Produto::where('retirado', '=', true)->get();
-    return view('welcome', compact('produtos'));
+    $descricao = "";
+    $action = "/itensRetirados";
+    return view('welcome', compact('produtos', 'descricao', 'action'));
+});
+
+Route::post('/itensRetirados', function (Request $request) {
+    $descricao = $request->input('descricao');
+    $action = "/itensRetirados";
+    $produtos = App\Produto::where('retirado', '=', true)->where('descricao', 'like',  "%".$descricao."%")->get();
+    return view('welcome', compact('produtos', 'descricao', 'action'));
 });

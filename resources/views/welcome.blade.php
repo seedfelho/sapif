@@ -3,9 +3,9 @@
 
  @section('content')
  <div class="InputContainer">
-     <form action="/" method="post">
+     <form action="{{$action}}" method="post">
          @csrf
-         <input placeholder="Digite aqui sua busca" id="input" class="input" name="descricao" type="text">
+         <input value="{{$descricao}}" placeholder="Digite aqui sua busca" id="input" class="input" name="descricao" type="text">
      </form>
  </div>
  <div>
@@ -13,7 +13,7 @@
          <br><br>
          <div class="itens">
              @if (count($produtos) === 0)
-             <div class="item">teste</div>
+             <div class="naoEncontrado"><p class="pNaoEcontontrado"> O item "{{$descricao}}" não foi encontrado </p></div>
              @else
              @foreach($produtos as $produto)
              <div class="item">

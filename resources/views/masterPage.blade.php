@@ -20,11 +20,11 @@
             <div class="image-wrapper">
             </div>
             <div class="sidebar-layout">
-                <div class="sidebar-header">
+                <div class="sidebar-header"><a class="aLogo" href="{{ url('/') }}">
                     <div class="pro-sidebar-logo">
-                        <div>S</div>
-                        <h5>SAPIF</h5>
-                    </div>
+							<div>S</div>
+							<h5>SAPIF</h5>
+                    </div></a>
                 </div>
                 <div class="sidebar-content">
                     <nav class="menu open-current-submenu">

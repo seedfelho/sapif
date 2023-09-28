@@ -534,3 +534,18 @@ img{
   font-size: 13.4px;
 }
 /* Barra de pesquisa fim */
+
+.aLogo{
+  color: white;
+}
+
+.naoEncontrado{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.pNaoEcontontrado{
+  font-weight: 600;
+}
