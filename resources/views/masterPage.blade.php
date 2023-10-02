@@ -22,7 +22,9 @@
             <div class="sidebar-layout">
                 <div class="sidebar-header"><a class="aLogo" href="{{ url('/') }}">
                     <div class="pro-sidebar-logo">
-							<div>S</div>
+							<div>
+                                <img class="logo" src="{{ asset('img/iconCabeca.png') }}" alt="">
+                            </div>
 							<h5>SAPIF</h5>
                     </div></a>
                 </div>

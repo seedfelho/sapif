@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <p class="textTop">Esse site foi desenvolvido como TCC</p>
+    <p class="textTop">Desenvolvedores do TCC</p>
     <div class="imagens">
         <div class="textoImg">
             <div class="foto">

@@ -16,8 +16,8 @@
 					<h1 class="tituloProduto">{{ $produto->descricao }}</h1>
 				</div>
 				<div class="infPrimaria">
-					<p class="textProduto">Local encontrado:{!! $produto->local_encontrado !!}</p>
-					<p class="textProduto">Quem encontrou:{!! $produto->quem_encontrou !!}</p>
+					<p class="textProduto">Local encontrado: {!! $produto->local_encontrado !!}</p>
+					<p class="textProduto">Quem encontrou: {!! $produto->quem_encontrou !!}</p>
 				</div>
 				<div class="infSecundaria">
 
