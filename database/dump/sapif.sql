@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Set-2023 às 01:01
+-- Tempo de geração: 17-Out-2023 às 23:16
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -136,10 +136,14 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (62, 9, 'descricao', 'text_area', 'Descrição', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"}}', 2),
 (63, 9, 'local_encontrado', 'text', 'Local Encontrado', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"4\"}}', 3),
 (64, 9, 'quem_encontrou', 'text', 'Quem Encontrou', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"4\"}}', 4),
-(65, 9, 'tipo_id', 'hidden', 'Tipo Id', 1, 0, 0, 1, 1, 0, '{}', 6),
+(65, 9, 'tipo_id', 'hidden', 'Tipo Id', 1, 0, 0, 1, 1, 0, '{\"display\":{\"width\":\"2\"}}', 6),
 (66, 9, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 7),
 (67, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
-(69, 9, 'produto_belongsto_tipo_relationship', 'relationship', 'tipos', 1, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Tipos\",\"table\":\"tipos\",\"type\":\"belongsTo\",\"column\":\"tipo_id\",\"key\":\"id\",\"label\":\"descricao\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9);
+(69, 9, 'produto_belongsto_tipo_relationship', 'relationship', 'tipos', 1, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Tipos\",\"table\":\"tipos\",\"type\":\"belongsTo\",\"column\":\"tipo_id\",\"key\":\"id\",\"label\":\"descricao\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
+(70, 9, 'nome_retirada', 'text', 'Nome da pessoa está retirando', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"4\"}}', 11),
+(71, 9, 'email', 'text', 'E-mail', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"4\"}}', 12),
+(72, 9, 'observacao', 'text', 'Observação', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"4\"}}', 13),
+(73, 9, 'retirado', 'checkbox', 'Retirado', 0, 1, 1, 1, 1, 1, '{\"checked\":false,\"on\":\"sim\",\"off\":\"n\\u00e3o\"}', 10);
 
 -- --------------------------------------------------------
 
@@ -177,7 +181,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2023-08-25 00:49:03', '2023-08-25 00:49:03'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2023-08-25 00:49:03', '2023-08-25 00:49:03'),
 (8, 'tipos', 'tipos', 'Tipo', 'Tipos', NULL, 'App\\Tipos', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2023-08-25 01:00:57', '2023-08-25 01:00:57'),
-(9, 'produtos', 'produtos', 'Produto', 'Produtos', NULL, 'App\\Produto', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-08-25 01:10:31', '2023-08-25 02:32:58');
+(9, 'produtos', 'produtos', 'Produto', 'Produtos', NULL, 'App\\Produto', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-08-25 01:10:31', '2023-09-22 01:41:21');
 
 -- --------------------------------------------------------
 
@@ -213,7 +217,8 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '2023-08-25 00:49:02', '2023-08-25 00:49:02');
+(1, 'admin', '2023-08-25 00:49:02', '2023-08-25 00:49:02'),
+(2, 'usuario', '2023-10-03 03:20:32', '2023-10-03 03:23:14');
 
 -- --------------------------------------------------------
 
@@ -243,20 +248,23 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.media.index', NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 4, '2023-08-25 00:49:02', '2023-10-03 03:22:14', 'voyager.media.index', NULL),
 (3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 3, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.users.index', NULL),
 (4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 2, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.roles.index', NULL),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2023-08-25 00:49:02', '2023-08-25 00:49:02', NULL, NULL),
-(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 10, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.menus.index', NULL),
-(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 11, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.database.index', NULL),
-(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 12, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.compass.index', NULL),
-(9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 13, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.bread.index', NULL),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 14, '2023-08-25 00:49:02', '2023-08-25 00:49:02', 'voyager.settings.index', NULL),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2023-08-25 00:49:03', '2023-08-25 00:49:03', 'voyager.categories.index', NULL),
-(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2023-08-25 00:49:03', '2023-08-25 00:49:03', 'voyager.posts.index', NULL),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2023-08-25 00:49:03', '2023-08-25 00:49:03', 'voyager.pages.index', NULL),
-(14, 1, 'Tipos', '', '_self', NULL, NULL, NULL, 15, '2023-08-25 01:00:57', '2023-08-25 01:00:57', 'voyager.tipos.index', NULL),
-(15, 1, 'Produtos', '', '_self', NULL, NULL, NULL, 16, '2023-08-25 01:10:31', '2023-08-25 01:10:31', 'voyager.produtos.index', NULL);
+(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 8, '2023-08-25 00:49:02', '2023-10-03 03:22:14', NULL, NULL),
+(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2023-08-25 00:49:02', '2023-10-03 03:22:14', 'voyager.menus.index', NULL),
+(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2023-08-25 00:49:02', '2023-10-03 03:22:14', 'voyager.database.index', NULL),
+(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 3, '2023-08-25 00:49:02', '2023-10-03 03:22:14', 'voyager.compass.index', NULL),
+(9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 4, '2023-08-25 00:49:02', '2023-10-03 03:22:14', 'voyager.bread.index', NULL),
+(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 9, '2023-08-25 00:49:02', '2023-10-03 03:22:14', 'voyager.settings.index', NULL),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 7, '2023-08-25 00:49:03', '2023-10-03 03:22:14', 'voyager.categories.index', NULL),
+(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 5, '2023-08-25 00:49:03', '2023-10-03 03:22:14', 'voyager.posts.index', NULL),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 6, '2023-08-25 00:49:03', '2023-10-03 03:22:14', 'voyager.pages.index', NULL),
+(14, 1, 'Tipos', '', '_self', 'voyager-categories', '#000000', NULL, 10, '2023-08-25 01:00:57', '2023-10-03 03:27:44', 'voyager.tipos.index', 'null'),
+(15, 1, 'Produtos', '', '_self', 'voyager-treasure', '#000000', NULL, 11, '2023-08-25 01:10:31', '2023-10-03 03:22:14', 'voyager.produtos.index', 'null'),
+(16, 2, 'Dashboard', '', '_self', 'voyager-boat', '#000000', NULL, 17, '2023-10-03 03:21:24', '2023-10-03 03:21:24', 'voyager.dashboard', 'null'),
+(17, 2, 'Produto', '', '_self', 'voyager-treasure', '#000000', NULL, 18, '2023-10-03 03:22:06', '2023-10-03 03:22:06', 'voyager.produtos.index', 'null'),
+(18, 2, 'Tipos', '', '_self', 'voyager-categories', '#000000', NULL, 19, '2023-10-03 03:22:41', '2023-10-03 03:28:39', 'voyager.tipos.index', 'null');
 
 -- --------------------------------------------------------
 
@@ -431,6 +439,7 @@ CREATE TABLE `permission_role` (
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (1, 1),
+(1, 2),
 (2, 1),
 (3, 1),
 (4, 1),
@@ -471,15 +480,25 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (39, 1),
 (40, 1),
 (41, 1),
+(41, 2),
 (42, 1),
+(42, 2),
 (43, 1),
+(43, 2),
 (44, 1),
+(44, 2),
 (45, 1),
+(45, 2),
 (46, 1),
+(46, 2),
 (47, 1),
+(47, 2),
 (48, 1),
+(48, 2),
 (49, 1),
-(50, 1);
+(49, 2),
+(50, 1),
+(50, 2);
 
 -- --------------------------------------------------------
 
@@ -549,20 +568,25 @@ CREATE TABLE `produtos` (
   `quem_encontrou` varchar(255) DEFAULT NULL,
   `tipo_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `nome_retirada` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `observacao` text DEFAULT NULL,
+  `retirado` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `foto`, `descricao`, `local_encontrado`, `quem_encontrou`, `tipo_id`, `created_at`, `updated_at`) VALUES
-(2, 'produtos\\August2023\\GcRSjtphvNeLTci3BMON.jpg', 'çlkasjdflçkasj', 'aaa', 'asd', 3, '2023-09-01 00:09:03', '2023-09-01 00:09:03'),
-(3, 'produtos\\August2023\\l64BbgrtJoZILpvcmxZj.jpg', 'ola', 'lab1\'', 'tere', 2, '2023-09-01 00:12:49', '2023-09-01 00:12:49'),
-(4, 'produtos\\August2023\\xoUeSPoVeYykvG036j8t.webp', 'um fone de ouvido bluetooth da apple', 'ifmaker', 'tere', 3, '2023-09-01 01:03:47', '2023-09-01 01:03:47'),
-(5, 'produtos\\September2023\\1dBvWeN8xRFSMeViwWrk.jpg', 'Uma pulseira que aparente mente é de ouro', 'sala 03', 'Professor Diego Barros', 3, '2023-09-19 00:26:55', '2023-09-19 00:26:55'),
-(6, 'produtos\\September2023\\WLyXeDkA3ewX9OcQ4tiJ.jpg', 'Relógio digital branco', 'sala 06', 'Professor Baida', 1, '2023-09-19 00:29:00', '2023-09-19 00:29:00'),
-(7, 'produtos\\September2023\\0lHWGvGGKMVqcR9WR4W6.jpg', 'Iphone novo preto', 'sala 01', 'Professor Tere', 3, '2023-09-19 00:33:28', '2023-09-19 00:33:28');
+INSERT INTO `produtos` (`id`, `foto`, `descricao`, `local_encontrado`, `quem_encontrou`, `tipo_id`, `created_at`, `updated_at`, `nome_retirada`, `email`, `observacao`, `retirado`) VALUES
+(2, 'produtos\\August2023\\GcRSjtphvNeLTci3BMON.jpg', 'Oculos de sol', 'sala 04', 'Professora Danila', 3, '2023-09-01 00:09:03', '2023-10-03 00:18:02', NULL, NULL, NULL, '0'),
+(3, 'produtos\\August2023\\l64BbgrtJoZILpvcmxZj.jpg', 'Garrafa de agua', 'lab 01', 'Professor Terenciane', 2, '2023-09-01 00:12:49', '2023-10-03 00:19:08', NULL, NULL, NULL, '0'),
+(4, 'produtos\\August2023\\xoUeSPoVeYykvG036j8t.webp', 'Fone de ouvido bluetooth', 'ifmaker', 'Professor Terenciane', 3, '2023-09-01 01:03:47', '2023-10-03 00:19:49', NULL, NULL, NULL, '0'),
+(5, 'produtos\\September2023\\1dBvWeN8xRFSMeViwWrk.jpg', 'Uma pulseira que aparente mente é de ouro', 'sala 03', 'Professor Diego Barros', 3, '2023-09-19 00:26:55', '2023-09-22 01:57:41', NULL, NULL, NULL, '0'),
+(6, 'produtos\\September2023\\WLyXeDkA3ewX9OcQ4tiJ.jpg', 'Relógio digital branco', 'sala 06', 'Professor Baida', 1, '2023-09-19 00:29:00', '2023-09-22 01:57:26', NULL, NULL, NULL, '0'),
+(7, 'produtos\\September2023\\0lHWGvGGKMVqcR9WR4W6.jpg', 'Iphone novo preto', 'sala 01', 'Professor Terenciane', 3, '2023-09-19 00:33:28', '2023-10-03 00:19:16', NULL, NULL, NULL, '1'),
+(8, 'produtos\\September2023\\huvkE1e5RyrI5yBwsQCN.jpg', 'garrafa de agua', 'sala 06', 'professor Danilo', 2, '2023-09-22 22:12:59', '2023-09-22 22:12:59', NULL, NULL, NULL, '0');
 
 -- --------------------------------------------------------
 
@@ -608,16 +632,16 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
-(1, 'site.title', 'Site Title', 'Site Title', '', 'text', 1, 'Site'),
-(2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
-(3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
-(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', '', '', 'text', 4, 'Site'),
-(5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin'),
-(6, 'admin.title', 'Admin Title', 'Voyager', '', 'text', 1, 'Admin'),
-(7, 'admin.description', 'Admin Description', 'Welcome to Voyager. The Missing Admin for Laravel', '', 'text', 2, 'Admin'),
-(8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
-(9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
-(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '', '', 'text', 1, 'Admin');
+(2, 'site.description', 'Site Description', 'Bem vindo ao sistema de achados e perdidos do campus naviraí', '', 'text', 3, 'Site'),
+(3, 'admin.logo', 'Site Logo', 'settings\\October2023\\VEjmzHMyRJvYcDkysBIY.png', '', 'image', 4, 'Admin'),
+(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 6, 'Site'),
+(5, 'admin.bg_image', 'Admin Background Image', 'settings\\October2023\\9iATPt1x2zNw7ULXuRzx.png', '', 'image', 5, 'Admin'),
+(6, 'admin.title', 'Admin Title', 'SAPIF', '', 'text', 1, 'Admin'),
+(7, 'admin.description', 'Admin Description', 'Bem vindo ao Sistema de Achados e Perdidos Instituto Federal SAPIF', '', 'text', 2, 'Admin'),
+(8, 'admin.loader', 'Admin Loader', 'settings\\October2023\\NxTHBhGmd3MKwI7kUubV.gif', '', 'image', 3, 'Admin'),
+(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin'),
+(11, 'site.title_administrador', 'Titulo Admin', 'SAPIF', NULL, 'text', 2, 'Site'),
+(12, 'admin.icon_image', 'Admin Icon Image', 'settings\\October2023\\IkLTDrpdTywLBXDqWjdb.png', NULL, 'image', 7, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -719,7 +743,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$gZ64/mSzQkYBPfn63ChWqewIiWVk7ZsRD..Cv6WirucXLyFWL5IKq', 'wjNBO7k5htcoA7FfpxfVTIZJx5yb24dYcSMxGyIntbZW10kvP2b4ClQ7hPCt', '{\"locale\":\"pt_br\"}', '2023-08-25 00:49:03', '2023-08-25 00:56:08');
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$gZ64/mSzQkYBPfn63ChWqewIiWVk7ZsRD..Cv6WirucXLyFWL5IKq', 'vXx6zHop8yrFwsym3H9SepHo7rr3MfZ5do6l4J6orhjP00xtBIO5SNd2XmJ4', '{\"locale\":\"pt_br\"}', '2023-08-25 00:49:03', '2023-08-25 00:56:08');
 
 -- --------------------------------------------------------
 
@@ -892,7 +916,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de tabela `data_types`
@@ -910,13 +934,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de tabela `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `migrations`
@@ -952,7 +976,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `roles`
@@ -964,7 +988,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de tabela `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `tipos`
