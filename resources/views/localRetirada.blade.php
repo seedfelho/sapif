@@ -10,7 +10,7 @@
         <div class="imgLocal"></div>
     </div>
     <div class="alinha">
-        <p class="fontBaixo">O item pode ser retirado no Instituto Federal(IFMS) Campus naviraí na sala da cordenação com a Beth ou algum resposável pelo achados e perdidos</p>
+        <p class="fontBaixo">O item pode ser retirado no Instituto Federal(IFMS) Campus naviraí na CEREL com algum resposável pelo achados e perdidos que estiver lá no momento</p>
     </div>
 </div>
 @endsection
